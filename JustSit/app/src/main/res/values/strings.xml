@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">JustSit</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="login">LOGIN</string>
+    <string name="registrati">REGISTRATI</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="ristorante">RISTORANTE</string>
+    <string name="utente">UTENTE</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="email">E-mail</string>
+    <string name="telefono">Telefono</string>
+    <string name="conferma_password">Conferma password</string>
+    <string name="menu">Menu\'</string>
+    <string name="descrizione">Descrizione</string>
+    <string name="CAP">CAP</string>
+    <string name="citta">Citta\'</string>
+    <string name="indirizzo">Indirizzo</string>
+    <string name="numero_civico">N.</string>
+    <string name="tipologia">Tipologia</string>
+    <string name="title_activity_home_utente">HomeUtente</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_vista_ricerca">VistaRicerca</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_vista_modifica_utente">VistaModifica_Utente</string>
+
+
 </resources>

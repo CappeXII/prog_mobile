@@ -10,7 +10,7 @@ import java.util.*
 
 class GestoreRicerca(application: Application):AndroidViewModel(application) {
     private val db = Database.getInstance(application)
-    private var _ristoranteList = MutableLiveData(listOf<Ristorante>())
+    private val _ristoranteList = MutableLiveData(listOf<Ristorante>())
     val ristoranteList : LiveData<List<Ristorante>>
     get()= _ristoranteList
 

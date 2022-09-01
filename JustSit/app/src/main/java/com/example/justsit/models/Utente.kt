@@ -11,5 +11,4 @@ data class Utente(
     val cognome:String,
     val email:String,
     val telefono:String,
-    val immagine:String
 )

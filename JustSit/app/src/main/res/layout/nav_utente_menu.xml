@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/visualizza_profilo_utente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visualizza Profilo"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/gestisci_prenotazione_utente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestisci prenotazione"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/logout_utente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:clickable="true"/>
+</menu>

@@ -20,7 +20,7 @@ class GestoreLogin(application: Application): AndroidViewModel(application) {
             if (ristoranti.id_ristorante>i)
                 i=ristoranti.id_ristorante
         }
-        ristorante.id_ristorante=i
+        ristorante.id_ristorante=i+1
         db.ristoranteDao().insert(ristorante)
 
     }

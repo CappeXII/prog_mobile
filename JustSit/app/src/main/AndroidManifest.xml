@@ -8,6 +8,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JustSit" />
+        android:theme="@style/Theme.JustSit">
+        <activity
+            android:name=".views.VistaModifica_Utente"
+            android:exported="false"
+            android:label="@string/title_activity_vista_modifica_utente"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
+            android:name=".views.VistaRicerca"
+            android:exported="false"
+            android:label="@string/title_activity_vista_ricerca"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
+            android:name=".views.HomeUtente"
+            android:exported="false"
+            android:label="@string/title_activity_home_utente"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
+            android:name=".views.MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+    </application>
 
 </manifest>

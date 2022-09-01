@@ -18,6 +18,5 @@ data class Ristorante(
     val civico:String,
     val email:String,
     val telefono:String,
-    val immagine:String,
     val tipologia:String,
 )
