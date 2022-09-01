@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JustSit">
         <activity
+            android:name=".views.VistaModificaUtente"
+            android:exported="false"
+            android:label="@string/title_activity_vista_modifica_utente"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
             android:name=".views.VistaModifica_Utente"
             android:exported="false"
             android:label="@string/title_activity_vista_modifica_utente"

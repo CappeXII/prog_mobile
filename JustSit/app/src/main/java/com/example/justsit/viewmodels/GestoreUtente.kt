@@ -9,7 +9,7 @@ import com.example.justsit.models.Utente
 
 class GestoreUtente(application: Application):AndroidViewModel(application) {
     private val db = Database.getInstance(application)
-    private val _utente=MutableLiveData(Utente("", "", "", "", "", "", ""))
+    private val _utente=MutableLiveData(Utente("", "", "", "", "", ""))
     val utente:LiveData<Utente>
     get()=_utente
     private val _utenteList=MutableLiveData(listOf<Utente>())
