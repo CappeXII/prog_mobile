@@ -58,8 +58,13 @@ class VistaModificaUtente : AppCompatActivity() {
              val snackbar = Snackbar.make(binding.root, "Sei sicuro di voler eliminare l'account?", Snackbar.LENGTH_LONG)
              snackbar.setAction("CONFERMA", View.OnClickListener {
                  utenteModel.delete(utente)
+                 Toast.makeText(this, "Chiusura applicazione...", Toast.LENGTH_LONG)
+
+
+            this.finishAffinity()
 
              })
+            snackbar.show()
         }
         }
     }

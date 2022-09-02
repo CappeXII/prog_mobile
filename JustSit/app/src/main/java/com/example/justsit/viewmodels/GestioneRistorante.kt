@@ -8,9 +8,13 @@ import com.example.justsit.models.Database
 import com.example.justsit.models.Ristorante
 import com.example.justsit.models.Tavolo
 import com.example.justsit.models.Turno
+import java.util.*
 
 class GestioneRistorante(application: Application):AndroidViewModel(application) {
     private val db =Database.getInstance(application)
+    private var _turno = MutableLiveData(Turno(0, 0, Date(), Date()))
+    val turno : LiveData<Turno>
+    get()=_turno
     private var _listTurno = MutableLiveData(listOf<Turno>())
     val listTurno : LiveData<List<Turno>>
         get() = _listTurno
@@ -19,7 +23,7 @@ class GestioneRistorante(application: Application):AndroidViewModel(application)
     val listTavolo : LiveData<List<Tavolo>>
         get() = _listTavolo
 
-    private var _ristorante = MutableLiveData(Ristorante(0, "", "", "", "", "", "", "", "", "", "", "", "", ""))
+    private var _ristorante = MutableLiveData(Ristorante(0, "", "", "", "", "", "", "", "", "", "", "", ""))
     val ristorante: LiveData<Ristorante>
         get()=_ristorante
 
@@ -58,6 +62,10 @@ class GestioneRistorante(application: Application):AndroidViewModel(application)
     }
     fun deleteRistorante(ristorante: Ristorante){
         db.ristoranteDao().delete(ristorante)
+    }
+    fun getTurnoById(id: Int){
+        val x =db.turnoDao().getTurnoById(id)
+        _turno.value= x
     }
 
 }

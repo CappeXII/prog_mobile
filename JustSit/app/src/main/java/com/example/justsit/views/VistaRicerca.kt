@@ -44,6 +44,7 @@ class VistaRicerca : AppCompatActivity() {
                 rowView.findViewById<ImageButton>(R.id.ristorante_dettagli).setOnClickListener{
                     val intent = Intent(this, VistaRistorante::class.java)
                     intent.putExtras(intent.extras!!)
+                    intent.putExtra("ristorante", ristorante.id_ristorante)
                     startActivity(intent)
                 }
 

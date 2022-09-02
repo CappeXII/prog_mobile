@@ -94,13 +94,13 @@ class HomeUtente() : AppCompatActivity() {
             }
         val profilo : TextView = findViewById<TextView>(R.id.visualizza_profilo_utente)
         profilo.setOnClickListener{
-            val intent = Intent(this, VisualizzaUtente::class.java)
+            val intent = Intent(this, VistaModificaUtente::class.java)
             intent.putExtra("username", user)
             startActivity(intent)
         }
         val prenotazioni = findViewById<TextView>(R.id.gestisci_prenotazione_utente)
         prenotazioni.setOnClickListener{
-            val intent = Intent(this, PrenotazioniUtente::class.java)
+            val intent = Intent(this, VistaPrenotazioneUtente::class.java)
             intent.putExtra("username", user)
             startActivity(intent)
         }

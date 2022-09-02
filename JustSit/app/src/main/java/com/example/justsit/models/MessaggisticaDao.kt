@@ -7,8 +7,8 @@ import androidx.room.Query
 
 @Dao
 interface MessaggisticaDao {
-    @Query("SELECT * FROM messaggistica where cliente=:cliente and turno=:turno and tavolo=:tavolo and ristorante=:ristorante")
-    fun getMessaggiByPrenotazione(cliente:String, turno:Int, tavolo:Int, ristorante:Int):List<Messaggistica>
+    @Query("SELECT * FROM messaggistica where cliente=:cliente and turno=:turno and tavolo=:tavolo and ristorante=:ristorante and mittente=:mittente")
+    fun getMessaggiByPrenotazione(cliente:String, turno:Int, tavolo:Int, ristorante:Int, mittente:String):List<Messaggistica>
     @Insert
     fun insert(vararg messaggi:Messaggistica)
     @Delete
