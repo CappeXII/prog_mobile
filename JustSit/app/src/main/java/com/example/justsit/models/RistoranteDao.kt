@@ -11,6 +11,8 @@ interface RistoranteDao {
     fun getRistorantiFree(orarioinizio:Date, orariofine:Date, data:Date, npersone:Int, citta:String, tipologia:String):List<Ristorante>
     @Query("SELECT * FROM ristorante where id_ristorante=:id")
     fun getRistoranteById(id:Int):Ristorante
+    @Query("SELECT * FROM ristorante WHERE username=:username ")
+    fun getRistoranteByUsername(username:String):Ristorante
     @Insert
     fun insert(ristorante:Ristorante)
     @Update

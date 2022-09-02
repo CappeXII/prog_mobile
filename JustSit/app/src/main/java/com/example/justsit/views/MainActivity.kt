@@ -65,7 +65,7 @@ class LoginFragment: Fragment(){
                     startActivity(intent)
                 }
                 "ristorante" ->{
-                    val intent = Intent(this.context, VistaHomeRistorante::class.java)
+                    val intent = Intent(this.context, HomeRistorante::class.java)
                     intent.putExtra("username", binding.usernameText.toString())
                     startActivity(intent)
                 }

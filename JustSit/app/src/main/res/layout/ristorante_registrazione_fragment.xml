@@ -110,30 +110,6 @@
             app:layout_constraintStart_toEndOf="@+id/ristorante_indirizzo_insert"
             app:layout_constraintTop_toBottomOf="@+id/ristorante_citta_insert" />
 
-        <ImageButton
-            android:id="@+id/ristorante_immagine_insert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:src="@android:drawable/ic_menu_gallery"
-            app:layout_constraintEnd_toStartOf="@+id/ristorante_immagine_label"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ristorante_email_insert" />
-
-        <TextView
-            android:id="@+id/ristorante_immagine_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:text="Inserire un'immagine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/ristorante_immagine_insert"
-            app:layout_constraintTop_toBottomOf="@+id/ristorante_email_insert" />
-
         <EditText
             android:id="@+id/ristorante_telefono_insert"
             android:layout_width="wrap_content"
@@ -152,10 +128,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="@string/username"
-            app:layout_constraintTop_toBottomOf="@+id/ristorante_immagine_insert"
-            tools:layout_editor_absoluteX="78dp" />
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ristorante_email_insert" />
 
         <EditText
             android:id="@+id/ristorante_password_insert"

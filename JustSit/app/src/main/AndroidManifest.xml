@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JustSit">
         <activity
+            android:name=".views.VistaModificaRistorante"
+            android:exported="false"
+            android:label="@string/title_activity_vista_modifica_ristorante"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
+            android:name=".views.HomeRistorante"
+            android:exported="false"
+            android:label="@string/title_activity_home_ristorante"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
             android:name=".views.VistaRistorante"
             android:exported="false"
             android:label="@string/title_activity_vista_ristorante"
