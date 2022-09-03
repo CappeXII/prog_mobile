@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JustSit">
         <activity
+            android:name=".views.VistaPrenotazioneRistorante"
+            android:exported="false"
+            android:label="@string/title_activity_vista_prenotazione_ristorante"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
+            android:name=".views.VistaModificaTurno"
+            android:exported="false"
+            android:label="@string/title_activity_vista_modifica_turno"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
+            android:name=".views.VistaModificaTavolo"
+            android:exported="false"
+            android:label="@string/title_activity_vista_modifica_tavolo"
+            android:theme="@style/Theme.JustSit.NoActionBar" />
+        <activity
             android:name=".views.VistaModificaRistorante"
             android:exported="false"
             android:label="@string/title_activity_vista_modifica_ristorante"

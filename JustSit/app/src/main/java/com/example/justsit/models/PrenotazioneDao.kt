@@ -1,12 +1,12 @@
 package com.example.justsit.models
 
-import androidx.room.*
-import java.util.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 
 @Dao
 interface PrenotazioneDao {
-    @Query("SELECT * FROM prenotazione")
-    fun getAllPrenotazioni():List<Prenotazione>
     @Query("SELECT * FROM prenotazione where cliente=:cliente")
     fun getAllPrenotazioniByUsername(cliente:String):List<Prenotazione>
     @Query("SELECT * FROM prenotazione where ristorante=:ristorante")

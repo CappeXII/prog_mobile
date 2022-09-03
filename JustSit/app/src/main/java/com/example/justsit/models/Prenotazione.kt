@@ -1,7 +1,6 @@
 package com.example.justsit.models
 
 import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
 import androidx.room.Entity
 import java.util.*
 //mancano foreign key

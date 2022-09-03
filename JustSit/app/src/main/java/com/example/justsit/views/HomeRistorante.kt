@@ -7,25 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.justsit.R
 import com.example.justsit.databinding.ActivityHomeRistoranteBinding
 import com.example.justsit.models.*
 import com.example.justsit.viewmodels.GestionePrenotazione
 import com.example.justsit.viewmodels.GestioneRistorante
 import com.example.justsit.viewmodels.GestoreUtente
-import org.w3c.dom.Text
-import java.lang.StringBuilder
 
 class HomeRistorante : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeRistoranteBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,13 +35,15 @@ class HomeRistorante : AppCompatActivity() {
             findViewById<TextView>(R.id.username).text=it.nome
         }
         viewModel.ristorante.observe(this, observerRistorante)
+        viewModel.readRistoranteByUsername(user)
+        viewModel.ristorante.observe(this, observerRistorante)
         val observerTurno = Observer<List<Turno>>{
             for (turno in it){
                 val infl = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 val rowView : View = infl.inflate(R.layout.home_ristorante_turni, null)
                 val stringa = StringBuilder("TURNO ").append(turno.turno).append(" ").append(turno.orarioinizio.toString()).append(" - ").append(turno.orariofine.toString())
                 rowView.findViewById<TextView>(R.id.turno_title).text = stringa
-                val observerTavolo = Observer<List<Prenotazione>>{
+                val observerPrenotazione = Observer<List<Prenotazione>>{
                     for(prenotazione in it){
                         val infla = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                         val deepRowView : View = infla.inflate(R.layout.home_ristorante_tavolo, null)
@@ -67,11 +61,15 @@ class HomeRistorante : AppCompatActivity() {
                         prenotazioneModel.getMessaggioByKey(prenotazione.cliente, prenotazione.tavolo, prenotazione.turno, prenotazione.ristorante, "utente")
                         rowView.findViewById<LinearLayout>(R.id.turno_content).addView(deepRowView)
                     }
-                    binding.homeRistoranteContent.addView(rowView)
+
                 }
+                prenotazioneModel.listPrenotazioni.observe(this, observerPrenotazione)
+                prenotazioneModel.getPrenotazioniConfermateByTurno(id, turno.turno)
+                binding.homeRistoranteContent.addView(rowView)
             }
         }
-        viewModel.readRistoranteByUsername(user)
+        viewModel.listTurno.observe(this, observerTurno)
+        viewModel.readTurni(id)
 
 
 
@@ -97,7 +95,7 @@ class HomeRistorante : AppCompatActivity() {
         }
         val prenotazioni = findViewById<TextView>(R.id.gestisci_prenotazione_ristorante)
         prenotazioni.setOnClickListener{
-            val intent = Intent(this, VistaPrenotazioniRistorante::class.java)
+            val intent = Intent(this, VistaPrenotazioneRistorante::class.java)
             intent.putExtra("id", id)
             startActivity(intent)
         }

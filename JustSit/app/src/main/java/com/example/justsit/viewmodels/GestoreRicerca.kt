@@ -22,13 +22,13 @@ class GestoreRicerca(application: Application):AndroidViewModel(application) {
         _ristoranteList.value = x
     }
     fun filteredSearch(orarioinizio: Date, orariofine:Date, data:Date, npersone:Int, citta:String, tipologia:String){
-        var orarioInizio:Date
-        var orarioFine:Date
-        var Data:Date
-        var Citta:String
-        var Tipologia:String
+        val orarioInizio:Date
+        val orarioFine:Date
+        val Data:Date
+        val Citta:String
+        val Tipologia:String
         if(orarioinizio == Date())
-            orarioInizio = Date(0, 0, 0, 0, 0)
+            orarioInizio = Date()
         else
             orarioInizio=orarioinizio
         if(orariofine== Date())
@@ -52,13 +52,13 @@ class GestoreRicerca(application: Application):AndroidViewModel(application) {
 
     }
     fun tavoloFilteredSearch(orarioinizio: Date, orariofine: Date, data: Date, npersone: Int, citta: String, tipologia: String, ristorante: Int){
-        var orarioInizio:Date
-        var orarioFine:Date
-        var Data:Date
-        var Citta:String
-        var Tipologia:String
+        val orarioInizio:Date
+        val orarioFine:Date
+        val Data:Date
+        val Citta:String
+        val Tipologia:String
         if(orarioinizio == Date())
-            orarioInizio = Date(0, 0, 0, 0, 0)
+            orarioInizio = Date()
         else
             orarioInizio=orarioinizio
         if(orariofine==Date())
@@ -78,5 +78,6 @@ class GestoreRicerca(application: Application):AndroidViewModel(application) {
         else
             Tipologia=tipologia
         val x = db.tavoloDao().getTavoloFreeByRistorante(orarioInizio, orarioFine, Data, npersone, Citta, Tipologia, ristorante)
+        _tavoloList.value=x
     }
 }

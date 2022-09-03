@@ -5,18 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.*
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.justsit.R
 import com.example.justsit.databinding.*
 import com.example.justsit.models.Ristorante
 import com.example.justsit.models.Utente
-import com.example.justsit.viewmodels.GestioneRistorante
 import com.example.justsit.viewmodels.GestoreLogin
 import com.example.justsit.viewmodels.GestoreRicerca
 import com.example.justsit.viewmodels.GestoreUtente
@@ -40,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             fragTransaction.replace(R.id.fragmentContainerView, RegistrazioneFragment())
             binding.registratiScreen.isEnabled = false
             }
-        binding.loginScreen.setOnClickListener(){
+        binding.loginScreen.setOnClickListener {
             binding.registratiScreen.isEnabled = true
             fragTransaction.replace(R.id.fragmentContainerView, LoginFragment())
             binding.loginScreen.isEnabled= false
@@ -53,7 +48,7 @@ class LoginFragment: Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding : LoginFragmentBinding = LoginFragmentBinding.inflate(inflater, container, false)
         val viewModel = GestoreLogin(this.requireActivity().application)
         binding.loginButton.setOnClickListener{
@@ -81,7 +76,7 @@ class RegistrazioneFragment:Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding: RegistrazioneFragmentBinding = RegistrazioneFragmentBinding.inflate(inflater, container, false)
         binding.utenteScreen.isEnabled = false
         val manager = this.childFragmentManager.beginTransaction()
@@ -107,7 +102,7 @@ class RegistrazioneRistoranteFragment:Fragment(R.layout.ristorante_registrazione
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding : RistoranteRegistrazioneFragmentBinding = RistoranteRegistrazioneFragmentBinding.inflate(inflater, container, false)
         val viewModel = GestoreLogin(this.requireActivity().application)
         val viewModelRistorante = GestoreRicerca(this.requireActivity().application)
@@ -146,7 +141,7 @@ class RegistrazioneUtenteFragment:Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding : UtenteRegistrazioneFragmentBinding = UtenteRegistrazioneFragmentBinding.inflate(inflater, container, false)
         val viewModel = GestoreLogin(this.requireActivity().application)
         binding.utenteRegistrazione.setOnClickListener{

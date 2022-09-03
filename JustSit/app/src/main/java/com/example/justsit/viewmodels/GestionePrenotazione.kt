@@ -26,14 +26,7 @@ class GestionePrenotazione(application: Application):AndroidViewModel(applicatio
     fun deletePrenotazione(prenotazione: Prenotazione){
         db.prenotazioneDao().delete(prenotazione)
     }
-    fun getPrenotazioniByUtente(username:String){
-        val x = db.prenotazioneDao().getAllPrenotazioniByUsername(username)
-        _listPrenotazioni.value = x
-    }
-    fun getPrenotazioniByRistorante(id:Int){
-        val x = db.prenotazioneDao().getAllPrenotazioniByRistorante(id)
-        _listPrenotazioni.value = x
-    }
+
     fun getPrenotazioniConfermateByUtente(username:String){
         val x = db.prenotazioneDao().getPrenotazioniConfermateByUsername(username)
         _listPrenotazioni.value = x

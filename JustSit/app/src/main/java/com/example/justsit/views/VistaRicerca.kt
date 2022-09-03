@@ -7,18 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.justsit.R
 import com.example.justsit.databinding.ActivityVistaRicercaBinding
 import com.example.justsit.models.Ristorante
 import com.example.justsit.viewmodels.GestoreRicerca
-import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,7 +45,7 @@ class VistaRicerca : AppCompatActivity() {
             }
         }
         viewModel.ristoranteList.observe(this, observer)
-        var date : Date
+        val date : Date
         if (intent.getStringExtra("data")==""){
            val calendar : Calendar = Calendar.getInstance()
             calendar.add(Calendar.DAY_OF_YEAR, -1)

@@ -6,13 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.justsit.R
 import com.example.justsit.databinding.ActivityVistaPrenotazioneUtenteBinding
 import com.example.justsit.models.Messaggistica
@@ -21,7 +16,6 @@ import com.example.justsit.models.Ristorante
 import com.example.justsit.models.Turno
 import com.example.justsit.viewmodels.GestionePrenotazione
 import com.example.justsit.viewmodels.GestioneRistorante
-import java.lang.StringBuilder
 
 class VistaPrenotazioneUtente : AppCompatActivity() {
     private lateinit var binding: ActivityVistaPrenotazioneUtenteBinding
@@ -67,7 +61,7 @@ class VistaPrenotazioneUtente : AppCompatActivity() {
                 viewModel.listMessaggistica.observe(this, commentoObserver)
                 ristoranteModel.readRistorante(prenotazione.ristorante)
                 ristoranteModel.readTurni(prenotazione.turno)
-                viewModel.getMessaggioByKey(prenotazione.cliente, prenotazione.tavolo, prenotazione.turno, prenotazione.ristorante, "utente")
+                viewModel.getMessaggioByKey(prenotazione.cliente, prenotazione.tavolo, prenotazione.turno, prenotazione.ristorante, "ristorante")
                 rowView.findViewById<Button>(R.id.utente_prenotazione_delete_btn).setOnClickListener{
                     viewModel.deletePrenotazione(prenotazione)
                 }

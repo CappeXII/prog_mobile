@@ -1,23 +1,16 @@
 package com.example.justsit.views
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.justsit.R
 import com.example.justsit.databinding.ActivityVistaModificaRistoranteBinding
 import com.example.justsit.models.Ristorante
 import com.example.justsit.viewmodels.GestioneRistorante
+import com.google.android.material.snackbar.Snackbar
 
 class VistaModificaRistorante : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityVistaModificaRistoranteBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,13 +54,14 @@ class VistaModificaRistorante : AppCompatActivity() {
             }
 
         }
-        binding.ristoranteDeleteBtn.setOnClickListener(){
+        binding.ristoranteDeleteBtn.setOnClickListener {
             val snackbar = Snackbar.make(binding.root, "Sei sicuro di voler cancellare l'account?", Snackbar.LENGTH_SHORT)
-            snackbar.setAction("CONFERMA", View.OnClickListener{
+            snackbar.setAction("CONFERMA") {
                 viewModel.deleteRistorante(ristorante)
-                Toast.makeText(this, "Chiusura applicazione...", Toast.LENGTH_LONG)
+                Toast.makeText(this, "Chiusura applicazione...", Toast.LENGTH_LONG).show()
                 this.finishAffinity()
-            })
+            }
+            snackbar.show()
         }
 
     }

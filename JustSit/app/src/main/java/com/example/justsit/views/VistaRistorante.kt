@@ -53,14 +53,13 @@ class VistaRistorante : AppCompatActivity() {
                 rowView.findViewById<TextView>(R.id.ricerca_tavolo_numero).text = persone_tavolo
                 rowView.findViewById<Button>(R.id.ricerca_tavolo_prenota).setOnClickListener{
                     val date : Date
-                    if (intent.getStringExtra("data")==""){
+                    date = if (intent.getStringExtra("data")==""){
                         val calendar : Calendar = Calendar.getInstance()
                         calendar.add(Calendar.DAY_OF_YEAR, -1)
-                        date = calendar.time
-                    }
-                    else {
+                        calendar.time
+                    } else {
                         val formatter = SimpleDateFormat("dd/mm/yyyy")
-                        date = formatter.parse(intent.getStringExtra("data")!!)!!
+                        formatter.parse(intent.getStringExtra("data")!!)!!
                     }
                     val builder : AlertDialog.Builder = AlertDialog.Builder(this)
                     builder.setTitle("Prenotazione tavolo: inserire un messaggio per il ristorante (opzionale)")
