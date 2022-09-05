@@ -7,10 +7,6 @@ import androidx.room.Query
 
 @Dao
 interface PrenotazioneDao {
-    @Query("SELECT * FROM prenotazione where cliente=:cliente")
-    fun getAllPrenotazioniByUsername(cliente:String):List<Prenotazione>
-    @Query("SELECT * FROM prenotazione where ristorante=:ristorante")
-    fun getAllPrenotazioniByRistorante(ristorante:Int):List<Prenotazione>
     @Query("SELECT * FROM prenotazione where cliente=:cliente and data<date(CURRENT_DATE)")
     fun getPrenotazioniPassateByUsername(cliente:String):List<Prenotazione>
     @Query("SELECT * FROM prenotazione where ristorante=:ristorante and data<date(CURRENT_DATE)")
