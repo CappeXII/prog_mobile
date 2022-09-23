@@ -42,22 +42,17 @@
         <activity
             android:name=".views.VistaPrenotazioneUtente"
             android:exported="false"
-            android:label="@string/title_activity_vista_prenotazione_utente"
+            android:label="VistaPrenotazioneUtente"
             android:theme="@style/Theme.JustSit.NoActionBar" />
         <activity
             android:name=".views.VistaModificaUtente"
             android:exported="false"
-            android:label="@string/title_activity_vista_modifica_utente"
-            android:theme="@style/Theme.JustSit.NoActionBar" />
-        <activity
-            android:name=".views.VistaModifica_Utente"
-            android:exported="false"
-            android:label="@string/title_activity_vista_modifica_utente"
+            android:label="VistaModificaUtente"
             android:theme="@style/Theme.JustSit.NoActionBar" />
         <activity
             android:name=".views.VistaRicerca"
             android:exported="false"
-            android:label="@string/title_activity_vista_ricerca"
+            android:label="VistaRicerca"
             android:theme="@style/Theme.JustSit.NoActionBar" />
         <activity
             android:name=".views.HomeUtente"
@@ -66,9 +61,14 @@
             android:theme="@style/Theme.JustSit.NoActionBar" />
         <activity
             android:name=".views.MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.JustSit.NoActionBar" />
+            android:theme="@style/Theme.JustSit.NoActionBar" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
     </application>
 
 </manifest>

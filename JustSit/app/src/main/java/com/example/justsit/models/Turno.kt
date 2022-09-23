@@ -8,6 +8,6 @@ import java.util.*
 data class Turno(
     val turno:Int,
     val ristorante:Int,
-    val orarioinizio:Date,
-    val orariofine:Date
+    val orarioinizio:Long,
+    val orariofine:Long
 )

@@ -25,19 +25,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         binding.loginScreen.isEnabled = false
         val frag = LoginFragment()
-        val fragTransaction = supportFragmentManager.beginTransaction()
+        val fragManager = supportFragmentManager
+        val fragTransaction = fragManager.beginTransaction()
         fragTransaction.add(R.id.fragmentContainerView, frag)
+        fragTransaction.commit()
         binding.registratiScreen.setOnClickListener{
             binding.loginScreen.isEnabled = true
-            fragTransaction.replace(R.id.fragmentContainerView, RegistrazioneFragment())
+            val loginTransaction = fragManager.beginTransaction()
+            loginTransaction.replace(R.id.fragmentContainerView, RegistrazioneFragment())
+            loginTransaction.commit()
             binding.registratiScreen.isEnabled = false
             }
         binding.loginScreen.setOnClickListener {
             binding.registratiScreen.isEnabled = true
-            fragTransaction.replace(R.id.fragmentContainerView, LoginFragment())
+            val registratiTransaction = fragManager.beginTransaction()
+            registratiTransaction.replace(R.id.fragmentContainerView, LoginFragment())
+            registratiTransaction.commit()
             binding.loginScreen.isEnabled= false
         }
         }
@@ -80,15 +86,20 @@ class RegistrazioneFragment:Fragment(){
         val binding: RegistrazioneFragmentBinding = RegistrazioneFragmentBinding.inflate(inflater, container, false)
         binding.utenteScreen.isEnabled = false
         val manager = this.childFragmentManager.beginTransaction()
-        manager.add(R.id.fragmentContainerViewRegistrazione, RegistrazioneUtenteFragment() )
+        manager.add(R.id.fragmentContainerViewRegistrazione, RegistrazioneUtenteFragment())
+        manager.commit()
         binding.utenteScreen.setOnClickListener{
             binding.utenteScreen.isEnabled = false
-            manager.replace(R.id.fragmentContainerViewRegistrazione, RegistrazioneUtenteFragment())
+            val utenteManager = this.childFragmentManager.beginTransaction()
+            utenteManager.replace(R.id.fragmentContainerViewRegistrazione, RegistrazioneUtenteFragment())
+            utenteManager.commit()
             binding.ristoranteScreen.isEnabled = true
         }
         binding.ristoranteScreen.setOnClickListener{
             binding.ristoranteScreen.isEnabled = false
-            manager.replace(R.id.fragmentContainerViewRegistrazione, RegistrazioneRistoranteFragment())
+            val ristoranteManager = this.childFragmentManager.beginTransaction()
+            ristoranteManager.replace(R.id.fragmentContainerViewRegistrazione, RegistrazioneRistoranteFragment())
+            ristoranteManager.commit()
             binding.utenteScreen.isEnabled = true
         }
 

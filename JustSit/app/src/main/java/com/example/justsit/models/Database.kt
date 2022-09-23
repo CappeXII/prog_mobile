@@ -3,7 +3,9 @@ package com.example.justsit.models
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.*;
 
+@androidx.room.Database(entities = [Messaggistica::class, Prenotazione::class, Ristorante::class, Tavolo::class, Turno::class,Utente::class], version = 1)
 abstract class Database: RoomDatabase() {
     abstract fun messaggisticaDao(): MessaggisticaDao
     abstract fun prenotazioneDao(): PrenotazioneDao

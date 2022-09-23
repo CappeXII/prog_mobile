@@ -12,7 +12,7 @@ import java.util.*
 
 class GestioneRistorante(application: Application):AndroidViewModel(application) {
     private val db =Database.getInstance(application)
-    private var _turno = MutableLiveData(Turno(0, 0, Date(), Date()))
+    private var _turno = MutableLiveData(Turno(0, 0, 0, 0))
     val turno : LiveData<Turno>
     get()=_turno
     private var _listTurno = MutableLiveData(listOf<Turno>())

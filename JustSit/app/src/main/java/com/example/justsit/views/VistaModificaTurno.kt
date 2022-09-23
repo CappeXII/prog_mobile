@@ -62,8 +62,8 @@ class VistaModificaTurno : AppCompatActivity() {
         binding.turnoUpdateBtn.setOnClickListener{
 
             viewModel.updateTurno(Turno(turni[binding.modificaTurnoList.selectedItemPosition].turno, turni[binding.modificaTurnoList.selectedItemPosition].ristorante,
-                formatter.parse(binding.modificaTurnoOrarioInizio.text.toString())!!,
-                formatter.parse(binding.modificaTurnoOrarioFine.text.toString())!!
+                formatter.parse(binding.modificaTurnoOrarioInizio.text.toString()).time!!,
+                formatter.parse(binding.modificaTurnoOrarioFine.text.toString()).time!!
             ))
             Toast.makeText(this, "Turno modificato", Toast.LENGTH_SHORT).show()
             finish()
@@ -75,7 +75,7 @@ class VistaModificaTurno : AppCompatActivity() {
         }
         binding.turnoInsertBtn.setOnClickListener{
             viewModel.insertTurno(Turno(turni[turni.lastIndex].turno+1, id,
-                formatter.parse(binding.newTurnoOrarioInizio.text.toString())!!, formatter.parse(binding.newTurnoOrarioFine.text.toString())!!
+                formatter.parse(binding.newTurnoOrarioInizio.text.toString()).time!!, formatter.parse(binding.newTurnoOrarioFine.text.toString()).time!!
             ))
             Toast.makeText(this, "Turno inserito", Toast.LENGTH_SHORT).show()
             finish()

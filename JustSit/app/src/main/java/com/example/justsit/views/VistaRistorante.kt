@@ -67,7 +67,7 @@ class VistaRistorante : AppCompatActivity() {
                     input.inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
                     builder.setView(input)
                     builder.setPositiveButton("PRENOTA" ){ dialog, which ->
-                        viewPrenotazione.insertPrenotazione(Prenotazione(user, tavolo.tavolo, binding.ricercaListaTurni.selectedItem.toString().substring(6).toInt(), ristorante, false, date))
+                        viewPrenotazione.insertPrenotazione(Prenotazione(user, tavolo.tavolo, binding.ricercaListaTurni.selectedItem.toString().substring(6).toInt(), ristorante, false, date.time))
                         viewPrenotazione.insertMessaggio(Messaggistica(user, tavolo.tavolo, binding.ricercaListaTurni.selectedItem.toString().substring(6).toInt(), ristorante, "utente", input.text.toString()))
 
                     }

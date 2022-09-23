@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cyan_background"
-    tools:context=".BlankFragment">
+    android:background="@color/cyan_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,9 +34,7 @@
             android:textColorHint="#ABFFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_label"
-            app:layout_costraintTop_toBottomOf="@+id/username_label"
-            app:marginTop="10dp" />
+            app:layout_constraintTop_toBottomOf="@+id/password_label" />
 
         <EditText
             android:id="@+id/username_text"

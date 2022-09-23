@@ -86,7 +86,7 @@
     <ScrollView
         android:id="@+id/ricerca_dettagli_turni"
         android:layout_width="match_parent"
-        android:layout_height="500"
+        android:layout_height="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="1dp" />
 
