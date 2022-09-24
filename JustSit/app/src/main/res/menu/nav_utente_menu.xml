@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<menu
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content">
 
-    <TextView
+    <item
         android:id="@+id/visualizza_profilo_utente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visualizza Profilo"
+        android:title="Visualizza Profilo"
         android:clickable="true"/>
 
-    <TextView
+    <item
         android:id="@+id/gestisci_prenotazione_utente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestisci prenotazione"
+        android:title="Gestisci prenotazione"
         android:clickable="true"/>
 
-    <TextView
+    <item
         android:id="@+id/logout_utente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
+        android:title="Logout"
         android:clickable="true"/>
-</LinearLayout>
+</menu>

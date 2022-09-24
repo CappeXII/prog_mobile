@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<menu
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content">
 
-    <TextView
+    <item
         android:id="@+id/visualizza_profilo_ristorante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visualizza Profilo"
+        android:title="Visualizza Profilo"
         android:clickable="true"/>
 
-    <TextView
+    <item
         android:id="@+id/modifica_tavolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modifica tavolo"
+        android:title="Modifica tavolo"
         android:clickable="true"/>
 
-    <TextView
+    <item
         android:id="@+id/modifica_turno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modifica Turno"
+        android:title="Modifica Turno"
         android:clickable="true"/>
 
-    <TextView
+    <item
         android:id="@+id/gestisci_prenotazione_ristorante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestisci prenotazioni"
+        android:title="Gestisci prenotazioni"
         android:clickable="true"/>
 
-    <TextView
+    <item
         android:id="@+id/login_ristorante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
+        android:title="Logout"
         android:clickable="true"/>
-</LinearLayout>
+</menu>

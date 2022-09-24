@@ -5,13 +5,13 @@ import androidx.room.*
 @Dao
 interface TurnoDao {
     @Query("SELECT * FROM turno WHERE ristorante=:ristorante")
-    fun getTurnoByRistorante(ristorante:Int):List<Turno>
+    suspend fun getTurnoByRistorante(ristorante:Int):List<Turno>
     @Query("SELECT * FROM turno WHERE turno=:id")
-    fun getTurnoById(id:Int):Turno
+    suspend fun getTurnoById(id:Int):Turno
     @Insert
-    fun insert(vararg turno: Turno)
+    suspend fun insert(vararg turno: Turno)
     @Update
-    fun update(turno: Turno)
+    suspend fun update(turno: Turno)
     @Delete
-    fun delete(turno: Turno)
+    suspend fun delete(turno: Turno)
 }

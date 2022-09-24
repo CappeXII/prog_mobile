@@ -6,7 +6,7 @@
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/activity_home_ristorante.xml" value="0.176" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/activity_home_utente.xml" value="0.264" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/activity_main.xml" value="0.2199383350462487" />
-        <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/activity_vista_modifica_ristorante.xml" value="0.4" />
+        <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/activity_vista_modifica_ristorante.xml" value="0.16452991452991453" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/activity_vista_modifica_tavolo.xml" value="0.264" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/activity_vista_modifica_turno.xml" value="0.264" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/activity_vista_modifica_utente.xml" value="0.4" />
@@ -23,13 +23,15 @@
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/nav_utente_menu.xml" value="0.1" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/prenotazione.xml" value="0.11145833333333334" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/prenotazione_ristorante.xml" value="0.2" />
-        <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/registrazione_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/registrazione_fragment.xml" value="0.1" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/ricerca_ristorante.xml" value="0.264" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/ricerca_tavolo.xml" value="0.264" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/ricerca_turno_tavoli.xml" value="0.11145833333333334" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/ristorante_registrazione_fragment.xml" value="0.128" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/utente_prenotazione.xml" value="0.4" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/layout/utente_registrazione_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/menu/nav_ristorante_menu.xml" value="0.1" />
+        <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/menu/nav_utente_menu.xml" value="0.1" />
         <entry key="..\:/Users/paolo/git/repo/prog_mobile/JustSit/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2555" />
       </map>
     </option>

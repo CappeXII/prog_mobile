@@ -18,17 +18,20 @@
             android:name=".views.VistaModificaTurno"
             android:exported="false"
             android:label="@string/title_activity_vista_modifica_turno"
-            android:theme="@style/Theme.JustSit.NoActionBar" />
+            android:theme="@style/Theme.JustSit.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".views.VistaModificaTavolo"
             android:exported="false"
             android:label="@string/title_activity_vista_modifica_tavolo"
-            android:theme="@style/Theme.JustSit.NoActionBar" />
+            android:theme="@style/Theme.JustSit.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".views.VistaModificaRistorante"
             android:exported="false"
             android:label="@string/title_activity_vista_modifica_ristorante"
-            android:theme="@style/Theme.JustSit.NoActionBar" />
+            android:theme="@style/Theme.JustSit.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".views.HomeRistorante"
             android:exported="false"
@@ -48,7 +51,8 @@
             android:name=".views.VistaModificaUtente"
             android:exported="false"
             android:label="VistaModificaUtente"
-            android:theme="@style/Theme.JustSit.NoActionBar" />
+            android:theme="@style/Theme.JustSit.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".views.VistaRicerca"
             android:exported="false"
@@ -58,12 +62,14 @@
             android:name=".views.HomeUtente"
             android:exported="false"
             android:label="@string/title_activity_home_utente"
-            android:theme="@style/Theme.JustSit.NoActionBar" />
+            android:theme="@style/Theme.JustSit.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".views.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.JustSit.NoActionBar" >
+            android:theme="@style/Theme.JustSit.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />

@@ -15,6 +15,7 @@ import com.example.justsit.models.*
 import com.example.justsit.viewmodels.GestionePrenotazione
 import com.example.justsit.viewmodels.GestioneRistorante
 import com.example.justsit.viewmodels.GestoreUtente
+import com.google.android.material.navigation.NavigationView
 
 class HomeRistorante : AppCompatActivity() {
 
@@ -32,7 +33,7 @@ class HomeRistorante : AppCompatActivity() {
         val utenteModel = GestoreUtente(this.application)
         val observerRistorante = Observer<Ristorante>{
             id = it.id_ristorante
-            findViewById<TextView>(R.id.username).text=it.nome
+            binding.navView.getHeaderView(0).findViewById<TextView>(R.id.username).text=it.nome
         }
         viewModel.ristorante.observe(this, observerRistorante)
         viewModel.readRistoranteByUsername(user)
@@ -71,38 +72,52 @@ class HomeRistorante : AppCompatActivity() {
         viewModel.listTurno.observe(this, observerTurno)
         viewModel.readTurni(id)
 
+        binding.navView.setNavigationItemSelectedListener {
+            val intent : Intent
+            when (it.itemId) {
+                R.id.visualizza_profilo_ristorante -> {
+                    intent = Intent(this, VistaModificaRistorante::class.java)
+                    intent.putExtra("id", id)
+                    startActivity(intent)
+                    true
+                }
+                R.id.modifica_tavolo -> {
+                    intent = Intent(this, VistaModificaTavolo::class.java)
+                    intent.putExtra("id", id)
+                    startActivity(intent)
+                    true
+                }
+                R.id.modifica_turno -> {
+                    intent = Intent(this, VistaModificaTurno::class.java)
+                    intent.putExtra("id", id)
+                    startActivity(intent)
+                    true
+                }
+                R.id.gestisci_prenotazione_ristorante -> {
+                    intent = Intent(this, VistaPrenotazioneRistorante::class.java)
+                    intent.putExtra("id", id)
+                    startActivity(intent)
+                    true
+                }
+                R.id.login_ristorante -> {
+                    finish()
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+
+
+
+        }
 
 
 
 
-        val profilo = findViewById<TextView>(R.id.visualizza_profilo_ristorante)
-        profilo.setOnClickListener{
-            val intent = Intent(this, VistaModificaRistorante::class.java)
-            intent.putExtra("id", id)
-            startActivity(intent)
-        }
-        val tavoli_update = findViewById<TextView>(R.id.modifica_tavolo)
-        tavoli_update.setOnClickListener{
-            val intent = Intent(this, VistaModificaTavolo::class.java)
-            intent.putExtra("id", id)
-            startActivity(intent)
-        }
-        val turni_update = findViewById<TextView>(R.id.modifica_turno)
-        turni_update.setOnClickListener{
-            val intent = Intent(this, VistaModificaTurno::class.java)
-            intent.putExtra("id", id)
-            startActivity(intent)
-        }
-        val prenotazioni = findViewById<TextView>(R.id.gestisci_prenotazione_ristorante)
-        prenotazioni.setOnClickListener{
-            val intent = Intent(this, VistaPrenotazioneRistorante::class.java)
-            intent.putExtra("id", id)
-            startActivity(intent)
-        }
-        val logout = findViewById<TextView>(R.id.login_ristorante)
-        logout.setOnClickListener{
-            finish()
-        }
+
+
+
         }
 
 

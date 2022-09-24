@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.justsit.models.Database
 import com.example.justsit.models.Utente
+import kotlinx.coroutines.launch
 
 class GestoreUtente(application: Application):AndroidViewModel(application) {
     private val db = Database.getInstance(application)
@@ -17,16 +19,24 @@ class GestoreUtente(application: Application):AndroidViewModel(application) {
     get()= _utenteList
 
     fun readUtente(username:String){
-        _utente.value=db.utenteDao().getUtenteByUsername(username)
+        viewModelScope.launch {
+            _utente.value=db.utenteDao().getUtenteByUsername(username)
+        }
     }
     fun delete(utente: Utente){
-        db.utenteDao().delete(utente)
+        viewModelScope.launch {
+            db.utenteDao().delete(utente)
+        }
     }
     fun update(utente: Utente){
-        db.utenteDao().update(utente)
+        viewModelScope.launch {
+            db.utenteDao().update(utente)
+        }
     }
     fun readAllUtenti(){
-        val x = db.utenteDao().getAllUtenti()
-        _utenteList.value = x
+        viewModelScope.launch {
+            val x = db.utenteDao().getAllUtenti()
+            _utenteList.value = x
+        }
     }
 }

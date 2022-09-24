@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.justsit.R
 import com.example.justsit.databinding.*
 import com.example.justsit.models.Ristorante
@@ -16,6 +17,8 @@ import com.example.justsit.viewmodels.GestoreLogin
 import com.example.justsit.viewmodels.GestoreRicerca
 import com.example.justsit.viewmodels.GestoreUtente
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,19 +61,27 @@ class LoginFragment: Fragment(){
         val binding : LoginFragmentBinding = LoginFragmentBinding.inflate(inflater, container, false)
         val viewModel = GestoreLogin(this.requireActivity().application)
         binding.loginButton.setOnClickListener{
-            when( viewModel.login(binding.usernameText.text.toString(), binding.passwordText.text.toString())){
+            lifecycleScope.launch(Dispatchers.Main){
+            when( viewModel.login(binding.usernameText.text.toString(), binding.passwordText.text.toString())) {
                 "utente" -> {
+                    val intent = Intent(this@LoginFragment.context, HomeUtente::class.java)
+                    intent.putExtra("username", binding.usernameText.text.toString())
+                    startActivity(intent)
 
-                    val intent = Intent(this.context, HomeUtente::class.java)
-
+                }
+                "ristorante" -> {
+                    val intent = Intent(this@LoginFragment.context, HomeRistorante::class.java)
+                    intent.putExtra("username", binding.usernameText.text.toString())
                     startActivity(intent)
                 }
-                "ristorante" ->{
-                    val intent = Intent(this.context, HomeRistorante::class.java)
-                    intent.putExtra("username", binding.usernameText.toString())
-                    startActivity(intent)
-                }
-                "errore" -> Snackbar.make(this.requireView(), "Errore nelle credenziali", Snackbar.LENGTH_SHORT).show()
+                "errore" -> Snackbar.make(
+                    this@LoginFragment.requireView(),
+                    "Errore nelle credenziali",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                "wait" -> Snackbar.make(this@LoginFragment.requireView(), "Caricamento...", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
             }
         }
         return binding.root
@@ -118,26 +129,30 @@ class RegistrazioneRistoranteFragment:Fragment(R.layout.ristorante_registrazione
         val viewModel = GestoreLogin(this.requireActivity().application)
         val viewModelRistorante = GestoreRicerca(this.requireActivity().application)
         binding.ristoranteRegistrazione.setOnClickListener{
-            if(binding.ristoranteConfermaPassword.toString() != binding.ristorantePasswordInsert.toString())
+            if(binding.ristoranteConfermaPassword.text.equals(binding.ristorantePasswordInsert.text))
                 Snackbar.make(this.requireView(), "Errore nella conferma della password", Snackbar.LENGTH_SHORT).show()
             else{
 
                 var check = false
                 val ristoranteObserver = Observer<List<Ristorante>>{
                     for (ristorante in it){
-                        if (ristorante.username == binding.ristoranteUsernameInsert.toString())
+                        if (ristorante.username == binding.ristoranteUsernameInsert.text.toString())
                             check = true
                     }
                 }
                 viewModelRistorante.ristoranteList.observe(this.viewLifecycleOwner, ristoranteObserver)
+
                 viewModelRistorante.getAllRistoranti()
                 if(check)
                     Snackbar.make(this.requireView(), "Esiste già un ristorante con questo nome", Snackbar.LENGTH_SHORT).show()
                 else{
-                    if(binding.ristoranteUsernameInsert.toString()=="" || binding.ristorantePasswordInsert.toString()==""|| binding.ristoranteNomeInsert.toString()==""|| binding.ristoranteCittaInsert.toString()=="" || binding.ristoranteIndirizzoInsert.toString()=="")
+                    if(binding.ristoranteUsernameInsert.text.toString()=="" || binding.ristorantePasswordInsert.text.toString()==""|| binding.ristoranteNomeInsert.text.toString()==""|| binding.ristoranteCittaInsert.text.toString()=="" || binding.ristoranteIndirizzoInsert.text.toString()=="")
                         Snackbar.make(this.requireView(), "Username, password, nome, citta' e indirizzo sono parametri obbligatori", Snackbar.LENGTH_LONG).show()
                     else
-                        viewModel.insertRistorante(Ristorante(0, binding.ristoranteUsernameInsert.toString(), binding.ristorantePasswordInsert.toString(), binding.ristoranteNomeInsert.toString(), binding.ristoranteDescrizioneInsert.toString(), binding.ristoranteMenuInsert.toString(), binding.ristoranteCapInsert.toString(), binding.ristoranteCittaInsert.toString(), binding.ristoranteIndirizzoInsert.toString(), binding.ristoranteCivicoInsert.toString(), binding.ristoranteEmailInsert.toString(), binding.ristoranteTelefonoInsert.toString(), binding.ristoranteTipologiaInsert.toString()))
+                        viewModel.insertRistorante(Ristorante(0, binding.ristoranteUsernameInsert.text.toString(), binding.ristorantePasswordInsert.text.toString(), binding.ristoranteNomeInsert.text.toString(), binding.ristoranteDescrizioneInsert.text.toString(), binding.ristoranteMenuInsert.text.toString(), binding.ristoranteCapInsert.text.toString(), binding.ristoranteCittaInsert.text.toString(), binding.ristoranteIndirizzoInsert.text.toString(), binding.ristoranteCivicoInsert.text.toString(), binding.ristoranteEmailInsert.text.toString(), binding.ristoranteTelefonoInsert.text.toString(), binding.ristoranteTipologiaInsert.text.toString()))
+                        val intent = Intent(this.context, HomeRistorante::class.java)
+                        intent.putExtra("username", binding.ristoranteUsernameInsert.text.toString())
+                        startActivity(intent)
                 }
             }
 
@@ -156,7 +171,7 @@ class RegistrazioneUtenteFragment:Fragment(){
         val binding : UtenteRegistrazioneFragmentBinding = UtenteRegistrazioneFragmentBinding.inflate(inflater, container, false)
         val viewModel = GestoreLogin(this.requireActivity().application)
         binding.utenteRegistrazione.setOnClickListener{
-            if(binding.utentePasswordInsert.toString() != binding.utenteConfermaPasswordInsert.toString())
+            if(binding.utentePasswordInsert.text.toString() != binding.utenteConfermaPasswordInsert.text.toString())
                 Snackbar.make(this.requireView(), "Errore nella conferma della password", Snackbar.LENGTH_SHORT).show()
             else{
                 val utenteModel = GestoreUtente(this.requireActivity().application)
@@ -164,7 +179,7 @@ class RegistrazioneUtenteFragment:Fragment(){
 
                 val observer = Observer<List<Utente>> {
                     for(utente in it){
-                        if (utente.username == binding.utenteUsernameInsert.toString())
+                        if (utente.username == binding.utenteUsernameInsert.text.toString())
                             check=true
                         }
                     }
@@ -173,10 +188,13 @@ class RegistrazioneUtenteFragment:Fragment(){
                 if(check)
                     Snackbar.make(this.requireView(), "Esiste già un utente con questo username", Snackbar.LENGTH_SHORT).show()
                 else{
-                    if(binding.utenteUsernameInsert.toString()=="" || binding.utentePasswordInsert.toString()=="" || binding.utenteNomeInsert.toString()=="" || binding.utenteCognomeInsert.toString()=="")
+                    if(binding.utenteUsernameInsert.text.toString()=="" || binding.utentePasswordInsert.text.toString()=="" || binding.utenteNomeInsert.text.toString()=="" || binding.utenteCognomeInsert.text.toString()=="")
                         Snackbar.make(this.requireView(), "Username, password, nome e cognome sono parametri obbligatori", Snackbar.LENGTH_LONG).show()
                     else
-                        viewModel.insertUtente(Utente(binding.utenteUsernameInsert.toString(), binding.utentePasswordInsert.toString(), binding.utenteNomeInsert.toString(), binding.utenteCognomeInsert.toString(), binding.utenteEmailInsert.toString(), binding.utenteTelefonoInsert.toString()))
+                        viewModel.insertUtente(Utente(binding.utenteUsernameInsert.text.toString(), binding.utentePasswordInsert.text.toString(), binding.utenteNomeInsert.text.toString(), binding.utenteCognomeInsert.text.toString(), binding.utenteEmailInsert.text.toString(), binding.utenteTelefonoInsert.text.toString()))
+                        val intent = Intent(this.context, HomeUtente::class.java)
+                        intent.putExtra("username", binding.utenteUsernameInsert.text.toString())
+                        startActivity(intent)
                 }
 
             }
