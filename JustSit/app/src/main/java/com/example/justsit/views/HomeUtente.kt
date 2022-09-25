@@ -34,8 +34,8 @@ class HomeUtente : AppCompatActivity() {
         val utenteModel = GestoreUtente(this.application)
         val ristoranteModel = GestoreRicerca(this.application)
         val ristoranteObserver = Observer<List<Ristorante>> {
-            val array : Array<String> = emptyArray()
-            array[0]="tipologia"
+            val array = emptyList<String>().toMutableList()
+            array.add("tipologia")
             for (ristorante in it) {
                 var check = true
                 for (r in array)
@@ -44,7 +44,7 @@ class HomeUtente : AppCompatActivity() {
                         check = false
                 }
                 if(check)
-                    array[array.lastIndex+1] = ristorante.tipologia
+                    array.add(ristorante.tipologia)
             }
             val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, array)
             binding.utenteTipologiaSearch.adapter=adapter
@@ -64,42 +64,49 @@ class HomeUtente : AppCompatActivity() {
             val formatter : DateFormat = SimpleDateFormat("hh:mm")
             val inizio : Date
             val fine : Date
-            if(binding.utenteOrarioInizioSearch.toString()=="")
+            if(binding.utenteOrarioInizioSearch.text.toString()=="")
                 inizio = formatter.parse("00:00") as Date
             else
                 inizio = formatter.parse(binding.utenteOrarioInizioSearch.toString()) as Date
-            if(binding.utenteOrarioFineSearch.toString()=="")
-                fine = formatter.parse("00:00") as Date
+            if(binding.utenteOrarioFineSearch.text.toString()=="")
+                fine = formatter.parse("23:59") as Date
             else
                 fine = formatter.parse(binding.utenteOrarioFineSearch.toString()) as Date
             val search = Intent(this, VistaRicerca::class.java)
-            intent.putExtra("nome", binding.utenteRistoranteSearch.toString())
-            intent.putExtra("data", binding.utenteDataSearch.toString())
-            intent.putExtra("ora_inizio", inizio)
-            intent.putExtra("ora_fine", fine)
-            intent.putExtra("n_persone", binding.utentePersoneSearch.toString())
-            intent.putExtra("citta", binding.utenteCittaSearch.toString())
-            intent.putExtra("tipologia", binding.utenteTipologiaSearch.selectedItem.toString())
-            intent.putExtra("username", user)
+            search.putExtra("nome", binding.utenteRistoranteSearch.text.toString())
+            search.putExtra("data", binding.utenteDataSearch.text.toString())
+            search.putExtra("ora_inizio", inizio)
+            search.putExtra("ora_fine", fine)
+            search.putExtra("n_persone", binding.utentePersoneSearch.text.toString())
+            search.putExtra("citta", binding.utenteCittaSearch.text.toString())
+            search.putExtra("tipologia", binding.utenteTipologiaSearch.selectedItem.toString())
+            search.putExtra("username", user)
             startActivity(search)
 
         }
-        val profilo : TextView = findViewById(R.id.visualizza_profilo_utente)
-        profilo.setOnClickListener{
-            val intent = Intent(this, VistaModificaUtente::class.java)
-            intent.putExtra("username", user)
-            startActivity(intent)
+
+        binding.navViewUtente.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.visualizza_profilo_utente ->{
+                    val intent = Intent(this, VistaModificaUtente::class.java)
+                    intent.putExtra("username", user)
+                    startActivity(intent)
+                    true
+                }
+                R.id.gestisci_prenotazione_utente ->{
+                    val intent = Intent(this, VistaPrenotazioneUtente::class.java)
+                    intent.putExtra("username", user)
+                    startActivity(intent)
+                    true
+                }
+                R.id.logout_utente ->{
+                    finish()
+                    true
+                }
+                else -> false
+            }
         }
-        val prenotazioni = findViewById<TextView>(R.id.gestisci_prenotazione_utente)
-        prenotazioni.setOnClickListener{
-            val intent = Intent(this, VistaPrenotazioneUtente::class.java)
-            intent.putExtra("username", user)
-            startActivity(intent)
-        }
-        val logout = findViewById<TextView>(R.id.logout_utente)
-        logout.setOnClickListener{
-            finish()
-        }
+
 
     }
 

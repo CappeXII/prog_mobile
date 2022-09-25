@@ -27,6 +27,7 @@ class VistaRicerca : AppCompatActivity() {
         binding = ActivityVistaRicercaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val viewModel = GestoreRicerca(this.application)
+        val bundle = intent.extras
         val observer = Observer<List<Ristorante>>{
             for(ristorante in it) {
                 val infl = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -37,27 +38,29 @@ class VistaRicerca : AppCompatActivity() {
                 rowView.findViewById<TextView>(R.id.ricerca_posizione).text = posizione
                 rowView.findViewById<ImageButton>(R.id.ristorante_dettagli).setOnClickListener{
                     val intent = Intent(this, VistaRistorante::class.java)
-                    intent.putExtras(intent.extras!!)
+                    intent.putExtras(bundle!!)
                     intent.putExtra("ristorante", ristorante.id_ristorante)
                     startActivity(intent)
                 }
+                binding.ricercaContentLayout.addView(rowView)
 
             }
         }
         viewModel.ristoranteList.observe(this, observer)
         val date : Date
-        if (intent.getStringExtra("data")==""){
+        if (intent.getStringExtra("data") == ""){
            val calendar : Calendar = Calendar.getInstance()
-            calendar.add(Calendar.DAY_OF_YEAR, -1)
            date = calendar.time
         }
         else{
-            val formatter = SimpleDateFormat("dd/mm/yyyy")
+            val formatter = SimpleDateFormat("dd/MM/yyyy")
             date = formatter.parse(intent.getStringExtra("data")!!) as Date
         }
+        val tipologia= if(intent.getStringExtra("tipologia") == "tipologia") "" else intent.getStringExtra("tipologia")
+        val npersone = if(intent.getStringExtra("n_persone") == "") 0 else intent.getStringExtra("n_persone").toString().toInt()
 
-
-        viewModel.filteredSearch(intent.getSerializableExtra("ora_inizio") as Date, intent.getSerializableExtra("ora_fine") as Date, date, intent.getStringExtra("n_persone")!!.toInt(), intent.getStringExtra("citta") as String, intent.getStringExtra("tipologia") as String)
+        viewModel.filteredSearch(intent.getSerializableExtra("ora_inizio") as Date, intent.getSerializableExtra("ora_fine") as Date, date,
+            npersone!!, intent.getStringExtra("citta") as String, tipologia!!)
         binding.ricercaBack.setOnClickListener{
             finish()
         }

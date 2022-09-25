@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <data>
+       <variable
+           name="ristoranteModel"
+           type="com.example.justsit.viewmodels.GestioneRistorante"/>
+   </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cyan_background"
@@ -32,37 +39,37 @@
             android:id="@+id/ricerca_nome_ristorante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@{ristoranteModel.ristorante.nome}" />
 
         <TextView
             android:id="@+id/ricerca_tipologia_ristorante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@{ristoranteModel.ristorante.tipologia}" />
 
         <TextView
             android:id="@+id/Ricerca_località_ristorante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@{ristoranteModel.ristorante.cap+' '+ristoranteModel.ristorante.citta+' '+ristoranteModel.ristorante.indirizzo+' '+ristoranteModel.ristorante.civico}" />
 
         <TextView
             android:id="@+id/ricerca_menu_ristorante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@{ristoranteModel.ristorante.menu}" />
 
         <TextView
             android:id="@+id/ricerca_email_ristorante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@{ristoranteModel.ristorante.email}" />
 
         <TextView
             android:id="@+id/ricerca_telefono_ristorante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@{ristoranteModel.ristorante.telefono}" />
 
     </LinearLayout>
 
@@ -88,7 +95,14 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="1dp" />
+        tools:layout_editor_absoluteX="1dp" >
+
+        <LinearLayout
+            android:id="@+id/dettagli_turni_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
 
     <ImageButton
         android:id="@+id/ricerca_prenotazione_back"
@@ -100,3 +114,4 @@
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -45,11 +45,11 @@ class GestoreRicerca(application: Application):AndroidViewModel(application) {
             else
                 Data=data
             if(citta=="")
-                Citta=""
+                Citta="%"
             else
                 Citta=citta
             if(tipologia=="")
-                Tipologia = ""
+                Tipologia = "%"
             else
                 Tipologia=tipologia
             val x = db.ristoranteDao().getRistorantiFree(orarioInizio.time, orarioFine.time, Data.time, npersone, Citta, Tipologia )
@@ -77,11 +77,11 @@ class GestoreRicerca(application: Application):AndroidViewModel(application) {
             else
                 Data=data
             if(citta=="")
-                Citta=""
+                Citta="%"
             else
                 Citta=citta
             if(tipologia=="")
-                Tipologia=""
+                Tipologia="%"
             else
                 Tipologia=tipologia
             val x = db.tavoloDao().getTavoloFreeByRistorante(orarioInizio.time, orarioFine.time, Data.time, npersone, Citta, Tipologia, ristorante)

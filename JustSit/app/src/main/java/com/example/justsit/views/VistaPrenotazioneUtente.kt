@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -16,6 +17,8 @@ import com.example.justsit.models.Ristorante
 import com.example.justsit.models.Turno
 import com.example.justsit.viewmodels.GestionePrenotazione
 import com.example.justsit.viewmodels.GestioneRistorante
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 
 class VistaPrenotazioneUtente : AppCompatActivity() {
     private lateinit var binding: ActivityVistaPrenotazioneUtenteBinding
@@ -36,8 +39,9 @@ class VistaPrenotazioneUtente : AppCompatActivity() {
 
             for(prenotazione in it){
                 val infl = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                val rowView : View = infl.inflate(R.layout.utente_prenotazione, binding.root)
-                rowView.findViewById<TextView>(R.id.utente_prenotazione_data).text=prenotazione.data.toString()
+                val rowView : View = infl.inflate(R.layout.utente_prenotazione, null)
+                val formatter = SimpleDateFormat("dd/MM/yyyy")
+                rowView.findViewById<TextView>(R.id.utente_prenotazione_data).text=formatter.format(prenotazione.data).toString()
                 val tavolo =StringBuilder()
                 tavolo.append("Tavolo ").append(prenotazione.tavolo.toString())
                 rowView.findViewById<TextView>(R.id.utente_prenotazione_tavolo).text= tavolo
@@ -62,7 +66,7 @@ class VistaPrenotazioneUtente : AppCompatActivity() {
                 ristoranteModel.readRistorante(prenotazione.ristorante)
                 ristoranteModel.readTurni(prenotazione.turno)
                 viewModel.getMessaggioByKey(prenotazione.cliente, prenotazione.tavolo, prenotazione.turno, prenotazione.ristorante, "ristorante")
-                rowView.findViewById<Button>(R.id.utente_prenotazione_delete_btn).setOnClickListener{
+                rowView.findViewById<ImageButton>(R.id.utente_prenotazione_delete_btn).setOnClickListener{
                     viewModel.deletePrenotazione(prenotazione)
                 }
                 binding.utentePrenotazioneContent.addView(rowView)

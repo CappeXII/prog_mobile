@@ -89,8 +89,8 @@ class GestioneRistorante(application: Application):AndroidViewModel(application)
     }
     fun getTurnoById(id: Int){
         viewModelScope.launch {
-            val x =db.turnoDao().getTurnoById(id)
-            _turno.value= x
+            val x =db.turnoDao().getTurnoByRistorante(id)
+            _listTurno.value= x
         }
     }
     fun readRistoranteByUsername(username:String){
