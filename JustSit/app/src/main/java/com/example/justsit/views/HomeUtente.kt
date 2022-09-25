@@ -2,12 +2,10 @@ package com.example.justsit.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import com.example.justsit.R
@@ -21,15 +19,15 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeUtente() : AppCompatActivity() {
-    lateinit var user : String
-    lateinit var toggle: ActionBarDrawerToggle
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+class HomeUtente : AppCompatActivity() {
+    private lateinit var user : String
+    private lateinit var toggle: ActionBarDrawerToggle
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val binding : ActivityHomeUtenteBinding = ActivityHomeUtenteBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_home_utente)
+        setContentView(binding.root)
         val drawerLayout : DrawerLayout = binding.Drawerlayout
-        val navView: NavigationView = binding.navView
+        val navView: NavigationView = binding.navViewUtente
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -62,9 +60,6 @@ class HomeUtente() : AppCompatActivity() {
         }
         utenteModel.utente.observe(this, utenteObserver)
         utenteModel.readUtente(intent.getStringExtra("username")!!)
-        binding.navBtn.setOnClickListener{
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
         binding.utenteSearch.setOnClickListener{
             val formatter : DateFormat = SimpleDateFormat("hh:mm")
             val inizio : Date
@@ -88,8 +83,8 @@ class HomeUtente() : AppCompatActivity() {
             intent.putExtra("username", user)
             startActivity(search)
 
-            }
-        val profilo : TextView = findViewById<TextView>(R.id.visualizza_profilo_utente)
+        }
+        val profilo : TextView = findViewById(R.id.visualizza_profilo_utente)
         profilo.setOnClickListener{
             val intent = Intent(this, VistaModificaUtente::class.java)
             intent.putExtra("username", user)
@@ -106,9 +101,9 @@ class HomeUtente() : AppCompatActivity() {
             finish()
         }
 
-        }
-
     }
+
+}
 
 
 
